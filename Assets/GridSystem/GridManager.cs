@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private GridSo gridInfo;
+    private IGridDrawer _gridDrawer;
+    
     void Start()
     {
-        
+        _gridDrawer = GetComponent<IGridDrawer>();
+        _gridDrawer.Draw(gridInfo);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _gridDrawer.Draw(gridInfo);
     }
 }
