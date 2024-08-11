@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b3c4a6d-2a9d-4629-bb22-25e0c254d33c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/GridManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/GridSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/GridSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +20,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Nihtule-302&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Nihtule-302/8-puzzle-V2.git&quot;,
+    &quot;accountId&quot;: &quot;823a7733-8448-42e0-b79e-ee1cb45f1e8a&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Hobby/Game Design/Games/projects/8 puzzle V2/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -99,7 +112,9 @@
       <option name="presentableId" value="Default" />
       <updated>1723236444861</updated>
       <workItem from="1723236445805" duration="11957000" />
-      <workItem from="1723252068696" duration="1184000" />
+      <workItem from="1723252068696" duration="1463000" />
+      <workItem from="1723337261132" duration="1034000" />
+      <workItem from="1723340325738" duration="2462000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -109,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723251423099</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=".">
+      <option name="closed" value="true" />
+      <created>1723253500226</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723253500226</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,9 +146,21 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>

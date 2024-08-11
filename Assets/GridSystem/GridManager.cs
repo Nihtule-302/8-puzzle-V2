@@ -13,9 +13,4 @@ public class GridManager : MonoBehaviour
         _gridDrawer = GetComponent<IGridDrawer>();
         _gridDrawer.Draw(gridInfo);
     }
-
-    private void Update()
-    {
-        _gridDrawer.Draw(gridInfo);
-    }
 }
