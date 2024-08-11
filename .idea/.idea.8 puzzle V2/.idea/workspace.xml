@@ -7,10 +7,6 @@
     <list default="true" id="5b3c4a6d-2a9d-4629-bb22-25e0c254d33c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/GridManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +110,7 @@
       <workItem from="1723236445805" duration="11957000" />
       <workItem from="1723252068696" duration="1463000" />
       <workItem from="1723337261132" duration="1034000" />
-      <workItem from="1723340325738" duration="2462000" />
+      <workItem from="1723340325738" duration="5025000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
