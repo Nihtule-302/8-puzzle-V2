@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rows: 3
   columns: 3
+  distanceBetweenTiles: 1.2

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eab4df00ea14debb1b2ddc8807e48f7, type: 3}
   m_Name: ControlTypeManager
   m_EditorClassIdentifier: 
-  currentControlScheme: {fileID: 11400000, guid: daeac3f0cf70df44f946d43a97de244a, type: 2}
+  currentControlScheme: {fileID: 11400000, guid: 386bb69ea490a0a45aae891f40288734, type: 2}

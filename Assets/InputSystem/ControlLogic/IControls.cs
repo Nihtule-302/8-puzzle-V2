@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IControls: IEnabled
+public interface IControls
 {
     void Move(Vector2 direction);
 }
