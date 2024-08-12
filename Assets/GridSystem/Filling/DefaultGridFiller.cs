@@ -2,23 +2,26 @@ using UnityEngine;
 
 public class DefaultGridFiller : IGridFiller
 {
-    public GridTile[,] FillGrid(int rows, int columns)
+    public void FillGrid(GridSo gridInfo)
     {
-        GridTile[,] tiles = new GridTile[rows, columns];
+        GridTile[,] tiles = new GridTile[gridInfo.rows, gridInfo.columns];
         int orderInGrid = 1;
+
+        int height = gridInfo.rows - 1;
+        int width = gridInfo.columns - 1;
  
-        for (int x = 0; x < rows; x++)
+        for (int y = height; y >= 0; y--)
         {
-            for (int y = 0; y < columns; y++)
+            for (int x = 0; x <= width; x++)
             {
                 tiles[x, y] = new GridTile
                 {
-                    GridPosition = new Vector2(x, y),
-                    OrderInTheGrid = orderInGrid++
+                    gridPosition = new Vector2(x * gridInfo.distanceBetweenTiles - gridInfo.CenterOfTheGrid.x,
+                                               y * gridInfo.distanceBetweenTiles - gridInfo.CenterOfTheGrid.y),
+                    orderInTheGrid = orderInGrid++
                 };
             }
         }
-
-        return tiles;
+        gridInfo.Tiles = tiles;
     }
 }

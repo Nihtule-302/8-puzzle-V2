@@ -1,4 +1,4 @@
 public interface IGridFiller
 {
-    GridTile[,] FillGrid(int rows, int columns);
+    void FillGrid(GridSo gridInfo);
 }

@@ -1,14 +1,10 @@
 using UnityEngine;
 
-[ExecuteAlways]
 public class DefaultGridDrawer : MonoBehaviour, IGridDrawer
 {
     [SerializeField] private GameObject tilePrefab;
     private GameObject[,] _tiles;
     
-    [Range(0.5f,10f)]
-    [SerializeField] private float distanceBetweenTiles = 1.5f;
-
     private readonly IObjectCreation _objectCreation = new DefaultObjectCreation();
     
 
@@ -19,28 +15,34 @@ public class DefaultGridDrawer : MonoBehaviour, IGridDrawer
             Debug.LogError("Grid or TilePrefab is not assigned.");
             return;
         }
-        _tiles = new GameObject[grid.rows, grid.columns];
+        _tiles = new GameObject[grid.columns,grid.rows];
 
-        CreateTiles(grid.rows, grid.columns);
+        CreateTiles(grid);
     }
     
-    private void CreateTiles(int gridRows, int gridColumns)
+    private void CreateTiles(GridSo grid)
     {
-        float width = (gridColumns - 1) * 0.5f;
-        float height = (gridRows - 1) * 0.5f;
-        Vector2 centerOfTheGrid = new Vector2(width * distanceBetweenTiles, height * distanceBetweenTiles);
-
-        for (int y = 0; y < gridRows; y++)
+        int i = 1;
+        for (int y = grid.rows-1 ; y >= 0; y--)
         {
-            for (int x = 0; x < gridColumns; x++)
+            for (int x = 0; x < grid.columns; x++)
             {
-                var position = new Vector3(x * distanceBetweenTiles - centerOfTheGrid.x,
-                                           y * distanceBetweenTiles - centerOfTheGrid.y);
+                var position = grid.Tiles[x, y].gridPosition;
 
                 _tiles[x, y] = _objectCreation.Create(tilePrefab,position);
                 _tiles[x, y].transform.parent = transform;
+                
+                NameTiles(grid, i, x, y);
+
+                i++;
             }
         }
         
+    }
+
+    private void NameTiles(GridSo grid, int i, int x, int y)
+    {
+        bool iteratorIsNotOnTheFinalTile = i < grid.rows * grid.columns;
+        _tiles[x, y].name = iteratorIsNotOnTheFinalTile ? i.ToString() : "Empty Tile";
     }
 }

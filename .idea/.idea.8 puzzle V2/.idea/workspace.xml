@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b3c4a6d-2a9d-4629-bb22-25e0c254d33c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Helpers/IEnabled.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Helpers/IEnabled.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/InputSystem/ControlLogic.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/InputSystem/ControlLogic/Dragging.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/InputSystem/ControlLogic/Dragging.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/InputSystem/ControlLogic/Swiping.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/InputSystem/ControlLogic/Swiping.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Filling/DefaultGridFiller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Filling/DefaultGridFiller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Filling/IGridFiller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Filling/IGridFiller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/GridSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/GridSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Tiles/GridTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/GridTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +123,7 @@
       <workItem from="1723252068696" duration="1463000" />
       <workItem from="1723337261132" duration="1034000" />
       <workItem from="1723340325738" duration="5025000" />
+      <workItem from="1723404573977" duration="14791000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />

@@ -5,9 +5,20 @@ public class GridSo : ScriptableObject
 {
     public int rows = 3;
     public int columns = 3;
-    
-    private int _cachedRows = 0;
-    private int _cachedColumns = 0;
+    [Range(0.5f,10f)]
+    public float distanceBetweenTiles = 1.5f;
+    public Vector2 CenterOfTheGrid
+    {
+        get
+        {
+            float width = (columns - 1) * 0.5f;
+            float height = (rows - 1) * 0.5f;
+            return new Vector2(width * distanceBetweenTiles, height * distanceBetweenTiles);
+        }
+    }
+
+    private int _cachedRows;
+    private int _cachedColumns;
 
     private IGridFiller _gridFiller;
     
@@ -15,20 +26,14 @@ public class GridSo : ScriptableObject
 
     private void OnEnable()
     {
-        if (_gridFiller == null)
-        {
-            _gridFiller = new DefaultGridFiller();
-        }
+        _gridFiller ??= new DefaultGridFiller();
         InitializeGrid();
     }
 
     private void OnValidate()
     {
-        if (_gridFiller == null)
-        {
-            _gridFiller = new DefaultGridFiller();
-        }
-        
+        _gridFiller ??= new DefaultGridFiller();
+
         InitializeGrid();
     }
 
@@ -36,7 +41,8 @@ public class GridSo : ScriptableObject
     {
         if (_cachedRows == rows && _cachedColumns == columns && Tiles != null) return;
         
-        Tiles = _gridFiller.FillGrid(rows, columns);
+        _gridFiller.FillGrid(this);
+        
         _cachedRows = rows;
         _cachedColumns = columns;
     }
