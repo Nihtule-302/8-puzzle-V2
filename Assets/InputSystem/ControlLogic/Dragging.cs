@@ -1,63 +1,45 @@
 using System;
 using UnityEngine;
 
-public class Dragging: MonoBehaviour, IControls
+public class Dragging : MonoBehaviour, IControls
 {
     [SerializeField] private GridSo gridInfo;
-    private Vector3 _orginalTilePosition;
+    [SerializeField] private float movementThreshold = 0.5f;
+    private Vector3 _originalTilePosition;
+    private MouseInput _mouseInput;
 
     private void Start()
     {
-        _orginalTilePosition = transform.position;
-    }
-
-    private Vector3 GetMouseWorldPosition()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = transform.position.z;
-
-        return mousePosition;
+        _mouseInput = GetComponent<MouseInput>();
+        _originalTilePosition = transform.position;
     }
 
     private void OnMouseDrag()
     {
-        transform.position = GetMouseWorldPosition();
-        var movementDirection = GetMouseWorldPosition() - _orginalTilePosition;
-        if (Math.Abs(movementDirection.x) >= Math.Abs(movementDirection.y) && movementDirection.x > 0)
+        var currentMousePosition = _mouseInput.GetMouseWorldPosition();
+        var movementDirection = currentMousePosition - _originalTilePosition;
+
+        if (movementDirection.magnitude >= movementThreshold)
         {
-            Move(Vector2.right);
-            return;
+            var moveDirection = DetermineMoveDirection(movementDirection);
+            Move(moveDirection);
         }
-        if (Math.Abs(movementDirection.x) >= Math.Abs(movementDirection.y) && movementDirection.x < 0)
+    }
+
+    private Vector2 DetermineMoveDirection(Vector3 movementDirection)
+    {
+        if (Math.Abs(movementDirection.x) >= Math.Abs(movementDirection.y))
         {
-            Move(Vector2.left);
-            return;
+            return movementDirection.x > 0 ? Vector2.right : Vector2.left;
         }
-        
-        if (Math.Abs(movementDirection.x) <= Math.Abs(movementDirection.y) && movementDirection.y > 0)
+        else
         {
-            Move(Vector2.up);
-            return;
-        }
-        if (Math.Abs(movementDirection.x) <= Math.Abs(movementDirection.y) && movementDirection.y < 0)
-        {
-            Move(Vector2.down);
-            return;
+            return movementDirection.y > 0 ? Vector2.up : Vector2.down;
         }
     }
 
     public void Move(Vector2 direction)
     {
         
-    }
-
-    public void Enable()
-    {
-        this.enabled = true;
-    }
-
-    public void Disable()
-    {
-        this.enabled = false;
     }
 }

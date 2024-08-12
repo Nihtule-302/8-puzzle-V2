@@ -5,6 +5,6 @@ using UnityEngine.Serialization;
 [Serializable]
 public class GridTile
 {
-    public Vector2 gridPosition;
-    public int orderInTheGrid;
+    public Vector3 gridPosition;
+    public string orderInTheGrid;
 }

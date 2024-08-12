@@ -35,6 +35,7 @@ public class GridSo : ScriptableObject
         _gridFiller ??= new DefaultGridFiller();
 
         InitializeGrid();
+        Debug.Log(Tiles[2,2].gridPosition);
     }
 
     private void InitializeGrid()

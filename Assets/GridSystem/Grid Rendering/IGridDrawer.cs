@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IGridDrawer
 {
-    void Draw(GridSo grid);
+    void DrawGrid(GridSo grid);
+    public void UpdateGrid(GridSo gridData);
 }

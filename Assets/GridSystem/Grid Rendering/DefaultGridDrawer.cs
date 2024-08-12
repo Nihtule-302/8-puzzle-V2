@@ -1,48 +1,82 @@
+using UnityEditor;
 using UnityEngine;
 
 public class DefaultGridDrawer : MonoBehaviour, IGridDrawer
 {
-    [SerializeField] private GameObject tilePrefab;
-    private GameObject[,] _tiles;
-    
-    private readonly IObjectCreation _objectCreation = new DefaultObjectCreation();
-    
+    [SerializeField] private GameObject tilePrefab; // Prefab to instantiate for each grid tile
+    private GameObject[,] _instantiatedTiles; // Array to hold references to instantiated tile GameObjects
+    private string[,] _instantiatedTileNames; // Array to store the names of the tiles for change detection
+    private readonly IObjectCreation _objectCreationHandler = new DefaultObjectCreation(); // Handles object creation
 
-    public void Draw(GridSo grid)
+    public void DrawGrid(GridSo gridData)
     {
-        if (grid == null || tilePrefab == null)
+        if (gridData == null || tilePrefab == null)
         {
-            Debug.LogError("Grid or TilePrefab is not assigned.");
+            Debug.LogError("Grid data or tilePrefab is not assigned.");
             return;
         }
-        _tiles = new GameObject[grid.columns,grid.rows];
 
-        CreateTiles(grid);
+        _instantiatedTiles = new GameObject[gridData.columns, gridData.rows];
+        _instantiatedTileNames = new string[gridData.columns, gridData.rows]; // Initialize the tileNames array
+
+        InstantiateTiles(gridData);
     }
-    
-    private void CreateTiles(GridSo grid)
+
+    private void InstantiateTiles(GridSo gridData)
     {
-        int i = 1;
-        for (int y = grid.rows-1 ; y >= 0; y--)
+        int tileOrder = 1;
+        for (int row = gridData.rows - 1; row >= 0; row--)
         {
-            for (int x = 0; x < grid.columns; x++)
+            for (int column = 0; column < gridData.columns; column++)
             {
-                var position = grid.Tiles[x, y].gridPosition;
+                var tilePosition = gridData.Tiles[column, row].gridPosition;
 
-                _tiles[x, y] = _objectCreation.Create(tilePrefab,position);
-                _tiles[x, y].transform.parent = transform;
-                
-                NameTiles(grid, i, x, y);
+                _instantiatedTiles[column, row] = _objectCreationHandler.Create(tilePrefab, tilePosition);
+                _instantiatedTiles[column, row].transform.parent = transform;
 
-                i++;
+                AssignTileName(tileOrder, column, row);
+
+                tileOrder++;
             }
         }
-        
     }
 
-    private void NameTiles(GridSo grid, int i, int x, int y)
+    private void AssignTileName(int tileOrder, int column, int row)
     {
-        bool iteratorIsNotOnTheFinalTile = i < grid.rows * grid.columns;
-        _tiles[x, y].name = iteratorIsNotOnTheFinalTile ? i.ToString() : "Empty Tile";
+        bool isNotLastTile = tileOrder < _instantiatedTiles.GetLength(0) * _instantiatedTiles.GetLength(1);
+        _instantiatedTiles[column, row].name = isNotLastTile ? tileOrder.ToString() : "";
+        _instantiatedTileNames[column, row] = _instantiatedTiles[column, row].name;
+    }
+
+    public void UpdateGrid(GridSo gridData)
+    {
+        if (!HaveTilesChanged(gridData))
+        {
+            return;
+        }
+        
+        for (int row = gridData.rows - 1; row >= 0; row--)
+        {
+            for (int column = 0; column < gridData.columns; column++)
+            {
+                _instantiatedTiles[column, row].transform.position = gridData.Tiles[column, row].gridPosition;
+            }
+        }
+    }
+
+    private bool HaveTilesChanged(GridSo gridData)
+    {
+        for (int row = gridData.rows - 1; row >= 0; row--)
+        {
+            for (int column = 0; column < gridData.columns; column++)
+            {
+                if (gridData.Tiles[column, row].orderInTheGrid.ToString() != _instantiatedTileNames[column, row] || 
+                    gridData.Tiles[column, row].gridPosition != _instantiatedTiles[column, row].transform.position)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
