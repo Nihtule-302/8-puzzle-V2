@@ -2,48 +2,56 @@ using UnityEngine;
 
 namespace nPuzzle.GridSystem
 {
-    public class DefaultGridFiller: IGridFiller
+    public class DefaultGridFiller : IGridFiller
     {
-        public void FillGrid( out GridTile[,] tiles, Vector2Int gridDimensions, Vector2 centerOfTheGrid)
+        public void FillGrid(out GridTile[,] gridTiles, Vector2Int gridSize, Vector2 gridCenter)
         {
-            var rows = gridDimensions.x;
-            var columns = gridDimensions.y;
-            tiles = new GridTile[rows, columns];
-            int orderInGrid = 1;
+            int rowCount = gridSize.x;
+            int columnCount = gridSize.y;
+            var lastColumnIndex = columnCount - 1;
+            
+            gridTiles = new GridTile[columnCount, rowCount];
+            int tileOrder = 1;
 
-            int lastRowIndex = rows - 1;
-            int lastColumnIndex = columns - 1;
-
-            for (int y = lastRowIndex; y >= 0; y--)
+            for (int rowIndex = rowCount - 1; rowIndex >= 0; rowIndex--)
             {
-                for (int x = 0; x <= lastColumnIndex; x++)
+                for (int columnIndex = 0; columnIndex < columnCount; columnIndex++)
                 {
-                    Vector2 gridPosition = CalculateGridPosition(x, y, centerOfTheGrid);
-                    string order = DetermineTileOrder(x, y, lastColumnIndex, orderInGrid);
+                    Vector2 tilePosition = CalculateTilePosition(columnIndex, rowIndex, gridCenter);
+                    string tileLabel = DetermineTileLabel(columnIndex, rowIndex, lastColumnIndex,ref tileOrder);
 
-                    tiles[x, y] = new GridTile
-                    {
-                        gridPosition = gridPosition,
-                        orderInTheGrid = order
-                    };
-
-                    orderInGrid++;
+                    gridTiles[columnIndex, rowIndex] = CreateGridTile(tilePosition, tileLabel);
                 }
             }
         }
 
-        private Vector2 CalculateGridPosition(int x, int y, Vector2 centerOfTheGrid)
+        private Vector2 CalculateTilePosition(int columnIndex, int rowIndex, Vector2 gridCenter)
         {
+            // Adjusts the tile position based on the grid’s center point
             return new Vector2(
-                x - centerOfTheGrid.x,
-                y - centerOfTheGrid.y
+                columnIndex - gridCenter.x,
+                rowIndex - gridCenter.y
             );
         }
 
-        private string DetermineTileOrder(int x, int y, int lastColumnIndex, int orderInGrid)
+        private string DetermineTileLabel(int columnIndex, int rowIndex, int lastColumnIndex, ref int tileOrder)
         {
-            // Leave the bottom-right tile as empty
-            return (y == 0 && x == lastColumnIndex) ? "" : orderInGrid.ToString();
+            //if (columnIndex == lastColumnIndex && rowIndex == lastRowIndex) return "";
+            
+            // Leaves the bottom-right tile empty
+            bool isBottomRightTile = (rowIndex == 0 && columnIndex == lastColumnIndex);
+            string tileLabel = isBottomRightTile ? "" : tileOrder.ToString();
+            tileOrder++;
+            return tileLabel;
+        }
+
+        private GridTile CreateGridTile(Vector2 position, string label)
+        {
+            return new GridTile
+            {
+                gridPosition = position,
+                orderInTheGrid = label
+            };
         }
     }
 }

@@ -30,20 +30,10 @@ namespace nPuzzle.GridSystem
             InitializeGrid();
         }
 
-        private void OnValidate()
-        {
-            _gridFiller ??= new DefaultGridFiller();
-
-            InitializeGrid();
-        }
-
         private void InitializeGrid()
         {
             if (_cachedRows == rows && _cachedColumns == columns && Tiles != null) return;
-            
-            Debug.Log("Vector2Int(rows,columns): "+ new Vector2Int(rows,columns));
-            Debug.Log("CenterOfTheGrid: "+CenterOfTheGrid);
-            //_gridFiller.FillGrid(out Tiles, new Vector2Int(rows,columns), CenterOfTheGrid);
+            _gridFiller.FillGrid(out Tiles, new Vector2Int(rows,columns), CenterOfTheGrid);
         
             _cachedRows = rows;
             _cachedColumns = columns;
