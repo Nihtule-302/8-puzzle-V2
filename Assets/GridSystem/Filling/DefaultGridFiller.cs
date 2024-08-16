@@ -4,19 +4,21 @@ namespace nPuzzle.GridSystem
 {
     public class DefaultGridFiller: IGridFiller
     {
-        public void FillGrid(GridSo gridInfo)
+        public void FillGrid( out GridTile[,] tiles, Vector2Int gridDimensions, Vector2 centerOfTheGrid)
         {
-            GridTile[,] tiles = new GridTile[gridInfo.rows, gridInfo.columns];
+            var rows = gridDimensions.x;
+            var columns = gridDimensions.y;
+            tiles = new GridTile[rows, columns];
             int orderInGrid = 1;
 
-            int lastRowIndex = gridInfo.rows - 1;
-            int lastColumnIndex = gridInfo.columns - 1;
+            int lastRowIndex = rows - 1;
+            int lastColumnIndex = columns - 1;
 
             for (int y = lastRowIndex; y >= 0; y--)
             {
                 for (int x = 0; x <= lastColumnIndex; x++)
                 {
-                    Vector2 gridPosition = CalculateGridPosition(x, y, gridInfo);
+                    Vector2 gridPosition = CalculateGridPosition(x, y, centerOfTheGrid);
                     string order = DetermineTileOrder(x, y, lastColumnIndex, orderInGrid);
 
                     tiles[x, y] = new GridTile
@@ -28,14 +30,13 @@ namespace nPuzzle.GridSystem
                     orderInGrid++;
                 }
             }
-            gridInfo.Tiles = tiles;
         }
 
-        private Vector2 CalculateGridPosition(int x, int y, GridSo gridInfo)
+        private Vector2 CalculateGridPosition(int x, int y, Vector2 centerOfTheGrid)
         {
             return new Vector2(
-                x - gridInfo.CenterOfTheGrid.x,
-                y - gridInfo.CenterOfTheGrid.y
+                x - centerOfTheGrid.x,
+                y - centerOfTheGrid.y
             );
         }
 

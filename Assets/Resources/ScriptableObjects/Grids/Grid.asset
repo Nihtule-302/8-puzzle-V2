@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351dd64c4ad6ed04a96b4dfc7215095d, type: 3}
   m_Name: Grid
   m_EditorClassIdentifier: 
-  rows: 3
+  rows: 4
   columns: 3
-  distanceBetweenTiles: 1.2

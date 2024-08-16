@@ -1,6 +1,9 @@
-using nPuzzle.GridSystem;
+using UnityEngine;
 
-public interface IGridFiller
+namespace nPuzzle.GridSystem
 {
-    void FillGrid(GridSo gridInfo);
+    public interface IGridFiller
+    {
+        void FillGrid(out GridTile[,] tiles, Vector2Int gridDimensions, Vector2 centerOfTheGrid);
+    }
 }

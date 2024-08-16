@@ -59,7 +59,6 @@ namespace nPuzzle.GridSystem
         {
             var gridIndex = WorldToGrid.ConvertToGridSpace(transform.transform.position, _gridInfo);
             string tileName = _gridInfo.Tiles[gridIndex.x, gridIndex.y].orderInTheGrid;
-            Debug.Log(_text.text);
             _text.text = tileName;
         }
     }

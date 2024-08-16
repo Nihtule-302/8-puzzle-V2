@@ -1,15 +1,16 @@
-using nPuzzle.GridSystem;
 using UnityEngine;
 
-public class GridFiller_TheGridItSelfIsScalalble : IGridFiller
+namespace nPuzzle.GridSystem
 {
-    public void FillGrid(GridSo gridInfo)
+    public class GridFiller_TheGridItSelfIsScalable : IGridFiller
     {
-        GridTile[,] tiles = new GridTile[gridInfo.rows, gridInfo.columns];
+        /*public void FillGrid(out GridTile[,] tiles, Vector2Int gridDimensions, Vector2 centerOfTheGrid)
+    {
+        GridTile[,] tiles = new GridTile[rows, columns];
         int orderInGrid = 1;
 
-        int lastRowIndex = gridInfo.rows - 1;
-        int lastColumnIndex = gridInfo.columns - 1;
+        int lastRowIndex = rows - 1;
+        int lastColumnIndex = columns - 1;
 
         for (int y = lastRowIndex; y >= 0; y--)
         {
@@ -28,9 +29,9 @@ public class GridFiller_TheGridItSelfIsScalalble : IGridFiller
             }
         }
         gridInfo.Tiles = tiles;
-    }
+    }*/
 
-    private Vector2 CalculateGridPosition(int x, int y, GridSo gridInfo)
+        /*private Vector2 CalculateGridPosition(int x, int y, GridSo gridInfo)
     {
         return new Vector2(
             x * gridInfo.distanceBetweenTiles - gridInfo.CenterOfTheGrid.x,
@@ -42,5 +43,11 @@ public class GridFiller_TheGridItSelfIsScalalble : IGridFiller
     {
         // Leave the bottom-right tile as empty
         return (y == 0 && x == lastColumnIndex) ? "" : orderInGrid.ToString();
+    }*/
+
+        public void FillGrid(out GridTile[,] tiles, Vector2Int gridDimensions, Vector2 centerOfTheGrid)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
