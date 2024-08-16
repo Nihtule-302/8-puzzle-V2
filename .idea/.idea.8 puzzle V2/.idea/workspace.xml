@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b3c4a6d-2a9d-4629-bb22-25e0c254d33c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/GridSystem/Filling/GridFiller_TheGridItSelfIsScalalble.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GridSystem/Filling/GridFiller_TheGridItSelfIsScalalble.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/TileProperties.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/TileProperties.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Helpers/WorldToGrid.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Helpers/WorldToGrid.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.8 puzzle V2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Filling/DefaultGridFiller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Filling/DefaultGridFiller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Filling/DefaultGridFiller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Filling/DefaultGridFiller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Filling/IGridFiller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Filling/IGridFiller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/IGridDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/IGridDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/GridManager.cs" afterDir="false" />
@@ -14,6 +22,9 @@
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Tiles/GridTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/GridTile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GridSystem/Tiles/Tile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/InputSystem/ControlLogic/Dragging.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/ControlLogic/Dragging.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Grids/Grid 3x3.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/Grids/Grid 3x3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +47,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Hobby/Game Design/Games/projects/8 puzzle V2/Assets/GridSystem/Grid Rendering/DefaultGridDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GridSystem/Tiles/FontProperties.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GridSystem/Tiles/TileSo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -122,6 +135,8 @@
       <workItem from="1723471560244" duration="2557000" />
       <workItem from="1723474369164" duration="743000" />
       <workItem from="1723486697165" duration="7815000" />
+      <workItem from="1723768171927" duration="474000" />
+      <workItem from="1723768676352" duration="9233000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />

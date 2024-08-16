@@ -1,50 +1,60 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/GridInfo", fileName = "Grid (n*m)")]
-public class GridSo : ScriptableObject
+namespace nPuzzle.GridSystem
 {
-    public int rows = 3;
-    public int columns = 3;
-    [Range(0.5f,10f)]
-    public float distanceBetweenTiles = 1.5f;
-    public Vector2 CenterOfTheGrid
+    [CreateAssetMenu(menuName = "ScriptableObjects/GridInfo", fileName = "Grid (n*m)")]
+    public class GridSo : ScriptableObject
     {
-        get
+        public int rows = 3;
+        public int columns = 3;
+        [Range(0.5f,10f)]
+        public float distanceBetweenTiles = 1.5f;
+        public Vector2 CenterOfTheGrid
         {
-            float width = (columns - 1) * 0.5f;
-            float height = (rows - 1) * 0.5f;
-            return new Vector2(width * distanceBetweenTiles, height * distanceBetweenTiles);
+            get
+            {
+                float width = (columns - 1) * 0.5f;
+                float height = (rows - 1) * 0.5f;
+                return new Vector2(width * distanceBetweenTiles, height * distanceBetweenTiles);
+            }
         }
-    }
 
-    private int _cachedRows;
-    private int _cachedColumns;
+        private int _cachedRows;
+        private int _cachedColumns;
 
-    private IGridFiller _gridFiller;
+        private IGridFiller _gridFiller;
     
-    public GridTile[,] Tiles;
+        public GridTile[,] Tiles;
 
-    private void OnEnable()
-    {
-        _gridFiller ??= new DefaultGridFiller();
-        InitializeGrid();
-    }
+        private void OnEnable()
+        {
+            _gridFiller ??= new DefaultGridFiller();
+            InitializeGrid();
+        }
 
-    private void OnValidate()
-    {
-        _gridFiller ??= new DefaultGridFiller();
+        private void OnValidate()
+        {
+            _gridFiller ??= new DefaultGridFiller();
 
-        InitializeGrid();
-        Debug.Log(Tiles[2,2].gridPosition);
-    }
+            InitializeGrid();
+            Debug.Log(Tiles[2,2].gridPosition);
+        }
 
-    private void InitializeGrid()
-    {
-        if (_cachedRows == rows && _cachedColumns == columns && Tiles != null) return;
+        private void InitializeGrid()
+        {
+            if (_cachedRows == rows && _cachedColumns == columns && Tiles != null) return;
         
-        _gridFiller.FillGrid(this);
+            _gridFiller.FillGrid(this);
         
-        _cachedRows = rows;
-        _cachedColumns = columns;
+            _cachedRows = rows;
+            _cachedColumns = columns;
+        }
+        
+        private void Reset()
+        {
+            rows = 3;
+            columns = 3;
+            distanceBetweenTiles = 1.5f;
+        }
     }
 }

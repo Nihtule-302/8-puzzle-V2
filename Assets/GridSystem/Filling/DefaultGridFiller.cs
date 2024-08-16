@@ -1,45 +1,48 @@
 using UnityEngine;
 
-public class DefaultGridFiller : IGridFiller
+namespace nPuzzle.GridSystem
 {
-    public void FillGrid(GridSo gridInfo)
+    public class DefaultGridFiller: IGridFiller
     {
-        GridTile[,] tiles = new GridTile[gridInfo.rows, gridInfo.columns];
-        int orderInGrid = 1;
-
-        int lastRowIndex = gridInfo.rows - 1;
-        int lastColumnIndex = gridInfo.columns - 1;
-
-        for (int y = lastRowIndex; y >= 0; y--)
+        public void FillGrid(GridSo gridInfo)
         {
-            for (int x = 0; x <= lastColumnIndex; x++)
+            GridTile[,] tiles = new GridTile[gridInfo.rows, gridInfo.columns];
+            int orderInGrid = 1;
+
+            int lastRowIndex = gridInfo.rows - 1;
+            int lastColumnIndex = gridInfo.columns - 1;
+
+            for (int y = lastRowIndex; y >= 0; y--)
             {
-                Vector2 gridPosition = CalculateGridPosition(x, y, gridInfo);
-                string order = DetermineTileOrder(x, y, lastColumnIndex, orderInGrid);
-
-                tiles[x, y] = new GridTile
+                for (int x = 0; x <= lastColumnIndex; x++)
                 {
-                    gridPosition = gridPosition,
-                    orderInTheGrid = order
-                };
+                    Vector2 gridPosition = CalculateGridPosition(x, y, gridInfo);
+                    string order = DetermineTileOrder(x, y, lastColumnIndex, orderInGrid);
 
-                orderInGrid++;
+                    tiles[x, y] = new GridTile
+                    {
+                        gridPosition = gridPosition,
+                        orderInTheGrid = order
+                    };
+
+                    orderInGrid++;
+                }
             }
+            gridInfo.Tiles = tiles;
         }
-        gridInfo.Tiles = tiles;
-    }
 
-    private Vector2 CalculateGridPosition(int x, int y, GridSo gridInfo)
-    {
-        return new Vector2(
-            x * gridInfo.distanceBetweenTiles - gridInfo.CenterOfTheGrid.x,
-            y * gridInfo.distanceBetweenTiles - gridInfo.CenterOfTheGrid.y
-        );
-    }
+        private Vector2 CalculateGridPosition(int x, int y, GridSo gridInfo)
+        {
+            return new Vector2(
+                x - gridInfo.CenterOfTheGrid.x,
+                y - gridInfo.CenterOfTheGrid.y
+            );
+        }
 
-    private string DetermineTileOrder(int x, int y, int lastColumnIndex, int orderInGrid)
-    {
-        // Leave the bottom-right tile as empty
-        return (y == 0 && x == lastColumnIndex) ? "" : orderInGrid.ToString();
+        private string DetermineTileOrder(int x, int y, int lastColumnIndex, int orderInGrid)
+        {
+            // Leave the bottom-right tile as empty
+            return (y == 0 && x == lastColumnIndex) ? "" : orderInGrid.ToString();
+        }
     }
 }

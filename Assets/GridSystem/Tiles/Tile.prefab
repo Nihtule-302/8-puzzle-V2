@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6982952946901939569}
   - component: {fileID: 5538621274342557872}
+  - component: {fileID: 7986955173562221911}
   - component: {fileID: 6999257447088151096}
   m_Layer: 0
   m_Name: Text (TMP)
@@ -79,6 +80,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7986955173562221911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123565593522140403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24868dd2988cd841ae5fd8230bbe662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileProperties: {fileID: 11400000, guid: 632e34064d484f94b922aa311cb02b66, type: 2}
 --- !u!114 &6999257447088151096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +251,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -360,6 +374,7 @@ GameObject:
   - component: {fileID: 3653655569466799075}
   - component: {fileID: 8420514562907985576}
   - component: {fileID: 3400558543530360650}
+  - component: {fileID: 7488274231223605473}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -431,3 +446,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f578a61c34d0043941d4d5f5baf904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7488274231223605473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820142719898078483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f89f421be4488bb1a35d5fe78039da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileProperties: {fileID: 11400000, guid: 632e34064d484f94b922aa311cb02b66, type: 2}

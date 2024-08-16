@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using nPuzzle.GridSystem;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
