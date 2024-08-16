@@ -14,7 +14,7 @@ namespace nPuzzle.GridSystem
 
         private void Start()
         {
-            _gridInfo = Resources.Load<GridSo>("ScriptableObjects/Grids");
+            _gridInfo = Resources.Load<GridSo>("ScriptableObjects/Grids/Grid");
             _text = GetComponentInChildren<TextMeshPro>();
 
             // Initial setup

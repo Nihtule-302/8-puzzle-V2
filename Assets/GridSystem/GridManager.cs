@@ -1,22 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using nPuzzle.GridSystem;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+namespace nPuzzle.GridSystem
 {
-    [SerializeField] private GridSo gridInfo;
-    private IGridDrawer _gridDrawer;
+    public class GridManager : MonoBehaviour
+    {
+        [SerializeField] private GridSo gridInfo;
+        private IGridDrawer _gridDrawer;
     
-    void Start()
-    {
-        _gridDrawer = GetComponent<IGridDrawer>();
-        _gridDrawer.DrawGrid(gridInfo);
-    }
+        void Start()
+        {
+            _gridDrawer = GetComponent<IGridDrawer>();
+            _gridDrawer.DrawGrid(gridInfo);
+        }
 
-    private void Update()
-    {
-        _gridDrawer.UpdateGrid(gridInfo);
+        private void Update()
+        {
+            _gridDrawer.UpdateGrid(gridInfo);
+        }
     }
 }

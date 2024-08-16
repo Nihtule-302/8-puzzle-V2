@@ -17,8 +17,8 @@ namespace nPuzzle
             }
 
             // Adjust world position based on grid's center
-            var gridPositionX = (int)((worldPosition.x - gridInfo.CenterOfTheGrid.x) / gridInfo.distanceBetweenTiles);
-            var gridPositionY = (int)((worldPosition.y - gridInfo.CenterOfTheGrid.y) / gridInfo.distanceBetweenTiles);
+            var gridPositionX = (int)((worldPosition.x + gridInfo.CenterOfTheGrid.x));
+            var gridPositionY = (int)((worldPosition.y + gridInfo.CenterOfTheGrid.y));
 
             return new Vector2Int(gridPositionX, gridPositionY);
         }
