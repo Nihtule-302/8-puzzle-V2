@@ -38,11 +38,11 @@ namespace nPuzzle.GridSystem
 
         private void InitializeGrid(GridSo gridSo)
         {
-            if (_cachedRows == rows && _cachedColumns == columns && Tiles != null) return;
+            if (_cachedRows == gridSo.rows && _cachedColumns == gridSo.columns) return;
             _gridFiller.InitializeGrid(gridSo);
         
-            _cachedRows = rows;
-            _cachedColumns = columns;
+            _cachedRows = gridSo.rows;
+            _cachedColumns = gridSo.columns;
         }
         
     }
@@ -58,27 +58,40 @@ namespace nPuzzle.GridSystem
         
         public TileState[,] Tiles;
         public GameObject[,] InstantiatedTiles;
+        
+        private GridSo _gridSo;
 
         public GridState(GridSo gridInfo)
         {
             Tiles = new TileState[gridInfo.rows, gridInfo.columns];
             InstantiatedTiles = new GameObject[gridInfo.rows, gridInfo.columns];
+            _gridSo = gridInfo;
         }
 
-        public void AddTile(int row, int column, Vector3 position, TileSo tileSo)
+        public void AddTile(int row, int column, Vector3 position)
         {
             TileState.TilesUsed++;
+            
+            var orderInTheGrid = DetermineTileLabel(row, column, _gridSo.columns-1);
             
             Tiles[row, column] = new TileState
             {
                 Position = position,
-                OrderInTheGrid = TileState.TilesUsed.ToString()
+                OrderInTheGrid = orderInTheGrid
             };
         }
-
-        public void InstantiateTile(int row, int column, Vector3 position, Transform parent, TileSo tileSo)
+        
+        private string DetermineTileLabel(int rowIndex,int columnIndex,  int lastColumnIndex)
         {
-            var tilePrefab = tileSo.tilePrefab;
+            // Leaves the bottom-right tile empty
+            bool isBottomRightTile = (rowIndex == 0 && columnIndex == lastColumnIndex);
+            string tileLabel = isBottomRightTile ? "" : TileState.TilesUsed.ToString();
+            return tileLabel;
+        }
+
+        public void InstantiateTile(int row, int column, Vector3 position, Transform parent)
+        {
+            var tilePrefab = _gridSo.tileSo.tilePrefab;
             InstantiatedTiles[row, column] = GameObject.Instantiate(tilePrefab, position, Quaternion.identity, parent);
             InstantiatedTiles[row, column].name = Tiles[row, column].OrderInTheGrid;
         }
