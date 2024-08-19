@@ -4,22 +4,16 @@ namespace nPuzzle.GridSystem
 {
     public class DefaultGridDrawer : MonoBehaviour, IGridDrawer
     {
-        [SerializeField] private GameObject tilePrefab; // Prefab to instantiate for each grid tile
-        private GameObject[,] _instantiatedTiles; // Array to hold references to instantiated tile GameObjects
-        private string[,] _instantiatedTileNames; // Array to store the names of the tiles for change detection
+        
         private readonly IObjectCreation _objectCreationHandler = new DefaultObjectCreation(); // Handles object creation
 
         public void DrawGrid(GridSo gridData)
         {
-            if (gridData == null || tilePrefab == null)
+            if (gridData == null || gridData.tileSo.tilePrefab == null)
             {
                 Debug.LogError("Grid data or tilePrefab is not assigned.");
                 return;
             }
-
-            _instantiatedTiles = new GameObject[gridData.columns, gridData.rows];
-            _instantiatedTileNames = new string[gridData.columns, gridData.rows]; // Initialize the tileNames array
-
             InstantiateTiles(gridData);
         }
 
@@ -30,23 +24,21 @@ namespace nPuzzle.GridSystem
             {
                 for (int column = 0; column < gridData.columns; column++)
                 {
-                    var tilePosition = gridData.Tiles[column, row].gridPosition;
-
-                    _instantiatedTiles[column, row] = _objectCreationHandler.Create(tilePrefab, tilePosition);
-                    _instantiatedTiles[column, row].transform.parent = transform;
-
-                    AssignTileName(tileOrder, column, row);
-
+                    var tilePosition = gridData.Tiles[row, column].gridPosition;
+                    
+                    Debug.Log(column + "," + row + "," + tilePosition);
+                    
+                    gridData.InstantiatedTiles[row, column] = _objectCreationHandler.Create(tilePrefab, tilePosition, transform);
+                    AssignTileName(tileOrder, column, row, gridData);
                     tileOrder++;
                 }
             }
         }
 
-        private void AssignTileName(int tileOrder, int column, int row)
+        private void AssignTileName(int tileOrder, int column, int row, GridSo gridData)
         {
-            bool isNotLastTile = tileOrder < _instantiatedTiles.GetLength(0) * _instantiatedTiles.GetLength(1);
-            _instantiatedTiles[column, row].name = isNotLastTile ? tileOrder.ToString() : "";
-            _instantiatedTileNames[column, row] = _instantiatedTiles[column, row].name;
+            bool isNotLastTile = tileOrder < gridData.InstantiatedTiles.GetLength(0) * gridData.InstantiatedTiles.GetLength(1);
+            gridData.InstantiatedTiles[row, column].name = isNotLastTile ? tileOrder.ToString() : "";
         }
 
         public void UpdateGrid(GridSo gridData)
@@ -60,7 +52,7 @@ namespace nPuzzle.GridSystem
             {
                 for (int column = 0; column < gridData.columns; column++)
                 {
-                    _instantiatedTiles[column, row].transform.position = gridData.Tiles[column, row].gridPosition;
+                    gridData.InstantiatedTiles[row, column].transform.position = gridData.Tiles[row, column].gridPosition;
                 }
             }
         }
@@ -71,8 +63,7 @@ namespace nPuzzle.GridSystem
             {
                 for (int column = 0; column < gridData.columns; column++)
                 {
-                    if (gridData.Tiles[column, row].orderInTheGrid != _instantiatedTileNames[column, row] || 
-                        gridData.Tiles[column, row].gridPosition != _instantiatedTiles[column, row].transform.position)
+                    if (gridData.Tiles[row, column].gridPosition != gridData.InstantiatedTiles[row, column].transform.position)
                     {
                         return true;
                     }

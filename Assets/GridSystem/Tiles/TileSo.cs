@@ -7,6 +7,7 @@ namespace nPuzzle.GridSystem
     {
 
         [Header("Tile Properties")]
+        public GameObject tilePrefab;
         public Color baseColor;
         public Color highlightColor = Color.red;
         

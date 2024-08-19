@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace nPuzzle.GridSystem
 {
@@ -16,27 +18,69 @@ namespace nPuzzle.GridSystem
                 return new Vector2(width, height);
             }
         }
+        
+        public TileSo tileSo;
 
         private int _cachedRows;
         private int _cachedColumns;
 
-        private IGridFiller _gridFiller;
+        private IGridInitializer _gridFiller;
     
-        public GridTile[,] Tiles;
-
+        public GridState GridState;
+        
         private void OnEnable()
         {
-            _gridFiller ??= new DefaultGridFiller();
-            InitializeGrid();
+            _gridFiller ??= new GridInitializer();
+
+            GridState = new GridState(this);
+            InitializeGrid(this);
         }
 
-        private void InitializeGrid()
+        private void InitializeGrid(GridSo gridSo)
         {
             if (_cachedRows == rows && _cachedColumns == columns && Tiles != null) return;
-            _gridFiller.FillGrid(out Tiles, new Vector2Int(rows,columns), CenterOfTheGrid);
+            _gridFiller.InitializeGrid(gridSo);
         
             _cachedRows = rows;
             _cachedColumns = columns;
+        }
+        
+    }
+    
+    public class GridState
+    {
+        public class TileState
+        {
+            public Vector3 Position;
+            public String OrderInTheGrid;
+            public static int TilesUsed = 0;
+        }
+        
+        public TileState[,] Tiles;
+        public GameObject[,] InstantiatedTiles;
+
+        public GridState(GridSo gridInfo)
+        {
+            Tiles = new TileState[gridInfo.rows, gridInfo.columns];
+            InstantiatedTiles = new GameObject[gridInfo.rows, gridInfo.columns];
+        }
+
+        public void AddTile(int row, int column, Vector3 position, TileSo tileSo)
+        {
+            TileState.TilesUsed++;
+            
+            Tiles[row, column] = new TileState
+            {
+                Position = position,
+                OrderInTheGrid = TileState.TilesUsed.ToString()
+            };
+        }
+
+        public void InstantiateTile(int row, int column, Vector3 position, Transform parent, TileSo tileSo)
+        {
+            var tilePrefab = tileSo.tilePrefab;
+            InstantiatedTiles[row, column] = GameObject.Instantiate(tilePrefab, position, Quaternion.identity, parent);
+            InstantiatedTiles[row, column].name = Tiles[row, column].OrderInTheGrid;
         }
         
     }
