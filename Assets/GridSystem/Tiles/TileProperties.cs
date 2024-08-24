@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,13 +11,21 @@ namespace nPuzzle.GridSystem
 
         private Color _cachedColor;
         private Vector3 _cachedTileSize;
+        private TextMeshPro _text;
 
-        private void Awake()
+        private void Start()
         {
             _image = GetComponentInChildren<Image>();
 
             // Initial setup
             ApplyTileProperties();
+            NameTheTileText();
+        }
+
+        private void NameTheTileText()
+        {
+            _text = GetComponentInChildren<TextMeshPro>();
+            //_text.text = gameObject.name;
         }
 
         private void Update()

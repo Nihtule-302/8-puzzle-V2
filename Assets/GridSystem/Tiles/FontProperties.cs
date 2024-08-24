@@ -33,7 +33,6 @@ namespace nPuzzle.GridSystem
             {
                 ApplyFontSize();
             }
-            //NameTheTiles();
         }
 
         private void ApplyFontSize()
@@ -52,14 +51,6 @@ namespace nPuzzle.GridSystem
         {
             ApplyFontSize();
             ApplyFontColor();
-            NameTheTiles();
-        }
-
-        private void NameTheTiles()
-        {
-            var gridIndex = WorldToGrid.ConvertToGridSpace(transform.transform.position, _gridInfo);
-            string tileName = _gridInfo.Tiles[gridIndex.x, gridIndex.y].orderInTheGrid;
-            _text.text = tileName;
         }
     }
 }

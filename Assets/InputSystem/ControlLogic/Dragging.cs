@@ -1,5 +1,6 @@
 using System;
 using nPuzzle.GridSystem;
+using nPuzzle.MovementSystem;
 using UnityEngine;
 
 namespace nPuzzle.InputSystem.ControlLogic
@@ -8,13 +9,16 @@ namespace nPuzzle.InputSystem.ControlLogic
     {
         [SerializeField] private GridSo gridInfo;
         [SerializeField] private float movementThreshold = 0.5f;
+        
         private Vector3 _originalTilePosition;
         private MouseInput _mouseInput;
+        private IMovement _movementController;
 
         private void Start()
         {
             _mouseInput = GetComponent<MouseInput>();
             _originalTilePosition = transform.position;
+            _movementController = new DefaultMovement();
         }
 
         private void OnMouseDrag()
@@ -30,21 +34,21 @@ namespace nPuzzle.InputSystem.ControlLogic
             }
         }
 
-        private Vector2 DetermineMoveDirection(Vector3 movementDirection)
+        private Vector2Int DetermineMoveDirection(Vector3 movementDirection)
         {
             if (Math.Abs(movementDirection.x) >= Math.Abs(movementDirection.y))
             {
-                return movementDirection.x > 0 ? Vector2.right : Vector2.left;
+                return movementDirection.x > 0 ? Vector2Int.right : Vector2Int.left;
             }
             else
             {
-                return movementDirection.y > 0 ? Vector2.up : Vector2.down;
+                return movementDirection.y > 0 ? Vector2Int.up : Vector2Int.down;
             }
         }
 
-        public void Move(Vector2 direction)
+        public void Move(Vector2Int direction)
         {
-        
+            _movementController.Move(direction);
         }
     }
 }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351dd64c4ad6ed04a96b4dfc7215095d, type: 3}
   m_Name: Grid
   m_EditorClassIdentifier: 
-  rows: 4
+  rows: 5
   columns: 3
+  tileConfiguration: {fileID: 11400000, guid: 632e34064d484f94b922aa311cb02b66, type: 2}

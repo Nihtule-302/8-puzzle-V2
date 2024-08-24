@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IControls
 {
-    void Move(Vector2 direction);
+    void Move(Vector2Int direction);
 }
