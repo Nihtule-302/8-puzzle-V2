@@ -13,7 +13,7 @@ namespace nPuzzle.MovementSystem
         
         public Vector2Int EmptyTileIndex => GridState.EmptyTileIndex;
         
-        public void Move(Vector2Int direction)
+        public void Move(Vector2 direction)
         {
             
         }

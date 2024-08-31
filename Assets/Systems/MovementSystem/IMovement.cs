@@ -10,6 +10,6 @@ namespace nPuzzle.MovementSystem
         Vector2 Right { get; }
         Vector2 Left  { get; }
         
-        public void Move(Vector2Int direction);
+        public void Move(Vector2 direction);
     }
 }
