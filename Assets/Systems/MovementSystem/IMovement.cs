@@ -1,15 +1,15 @@
 using UnityEngine;
 
-namespace nPuzzle.MovementSystem
+namespace nPuzzle.Systems.MovementSystem
 {
     public interface IMovement
     {
-        Vector2 Up    { get; }
-        Vector2 Down  { get; }
+        Vector2Int Up    { get; }
+        Vector2Int Down  { get; }
         
-        Vector2 Right { get; }
-        Vector2 Left  { get; }
+        Vector2Int Right { get; }
+        Vector2Int Left  { get; }
         
-        public void Move(Vector2 direction);
+        public void Move(Vector2Int direction);
     }
 }

@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0e1fac3e9d44aabeae411a05f3a83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridInfo: {fileID: 11400000, guid: a0e950dec79a2364b9ff169859fef0b6, type: 2}
+  gridData: {fileID: 11400000, guid: a0e950dec79a2364b9ff169859fef0b6, type: 2}
   movementThreshold: 0.5
 --- !u!114 &3400558543530360650
 MonoBehaviour:

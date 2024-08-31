@@ -2,6 +2,7 @@ using System;
 using nPuzzle.Systems.ControlSystem.InputMethods;
 using nPuzzle.Systems.GridSystem;
 using nPuzzle.Systems.MovementSystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace nPuzzle.Systems.ControlSystem.ControlLogic
@@ -13,13 +14,14 @@ namespace nPuzzle.Systems.ControlSystem.ControlLogic
         [SerializeField] private float movementThreshold = 0.5f;
 
         private Vector3 _initialTilePosition;
-        private IInputHandler _inputHandler;
-        private IMovementController _movementController;
+        private MouseInput _inputHandler;
+        private IMovement _movementController;
 
+        private bool _canDrag = true; 
         private void Awake()
         {
             _inputHandler = GetComponent<MouseInput>();
-            _movementController = new DefaultMovementController(gridData);
+            _movementController = new DefaultMovement(gridData);
         }
 
         private void Start()
@@ -27,15 +29,27 @@ namespace nPuzzle.Systems.ControlSystem.ControlLogic
             _initialTilePosition = transform.position;
         }
 
+        private void OnMouseDown()
+        {
+            if (gameObject.name.Equals(""))
+            {
+                return;
+            }
+            _canDrag = true;
+        }
+
         private void OnMouseDrag()
         {
-            Vector3 currentMousePosition = _inputHandler.GetMouseWorldPosition();
-            Vector3 dragDirection = currentMousePosition - _initialTilePosition;
+            if (!_canDrag) return;
+            
+            var currentMousePosition = _inputHandler.GetMouseWorldPosition();
+            var dragDirection = currentMousePosition - _initialTilePosition;
 
             if (dragDirection.magnitude >= movementThreshold)
             {
                 Vector2Int moveDirection = DetermineMoveDirection(dragDirection);
                 MoveTile(moveDirection);
+                _canDrag = false;
             }
         }
 

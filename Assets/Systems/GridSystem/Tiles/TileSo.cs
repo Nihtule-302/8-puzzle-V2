@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace nPuzzle.GridSystem
+namespace nPuzzle.Systems.GridSystem
 {
     [CreateAssetMenu(menuName = "TileInfo")]
     public class TileSo : ScriptableObject
@@ -15,12 +16,13 @@ namespace nPuzzle.GridSystem
         [SerializeField] private float tileSize = 0.5f;
         public Vector3 TileSize => new(tileSize, tileSize, tileSize);
         
+        public string emptyTileString = string.Empty;
+        
         
         [Header("Font Properties")]
         public float fontSize;
         public Color fontColor = Color.white;
         public Color highlightFontColor;
-        
     }
 }
 

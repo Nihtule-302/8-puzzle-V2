@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace nPuzzle.GridSystem
+namespace nPuzzle.Systems.GridSystem
 {
     public class GridInitializer: MonoBehaviour, IGridInitializer
     {
@@ -24,7 +23,6 @@ namespace nPuzzle.GridSystem
                     grid.CurrentGridState.AddTile(rowIndex, columnIndex, tilePosition);
                 }
             }
-            grid.CurrentGridState.FindEmptyTileIndex();
         }
 
         private Vector2 CalculateTilePosition(int rowIndex, int columnIndex, Vector2 gridCenter)

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace nPuzzle.GridSystem
+namespace nPuzzle.Systems.GridSystem
 {
     public class TileProperties : MonoBehaviour
     {

@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace nPuzzle.GridSystem
+namespace nPuzzle.Systems.GridSystem
 {
     public interface IGridInitializer
     {

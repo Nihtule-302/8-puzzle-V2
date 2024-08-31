@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /**
  * A Pooling System for GameObjects
 */
 
-namespace DentedPixel
+namespace nPuzzle._Packs.LeanTween.Testing.Scripts
 {
     public class LeanPool : object
     {

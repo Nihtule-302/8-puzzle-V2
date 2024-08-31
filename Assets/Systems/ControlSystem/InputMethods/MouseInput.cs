@@ -1,20 +1,21 @@
-
-using System;
 using UnityEngine;
 
-public class MouseInput: MonoBehaviour
+namespace nPuzzle.Systems.ControlSystem.InputMethods
 {
-    private Vector3 position;
-
-    private void Start()
+    public class MouseInput: MonoBehaviour
     {
-        position = transform.position;
-    }
+        private Vector3 _position;
 
-    public Vector3 GetMouseWorldPosition()
-    {
-        var mousePoint = Input.mousePosition;
-        mousePoint.z = Camera.main.WorldToScreenPoint(position).z;
-        return Camera.main.ScreenToWorldPoint(mousePoint);
+        private void Start()
+        {
+            _position = transform.position;
+        }
+
+        public Vector3 GetMouseWorldPosition()
+        {
+            var mousePoint = Input.mousePosition;
+            mousePoint.z = Camera.main.WorldToScreenPoint(_position).z;
+            return Camera.main.ScreenToWorldPoint(mousePoint);
+        }
     }
 }

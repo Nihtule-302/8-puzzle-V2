@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace nPuzzle.GridSystem
+namespace nPuzzle.Systems.GridSystem
 {
     public class GridState
     {
@@ -9,14 +9,16 @@ namespace nPuzzle.GridSystem
         {
             public Vector3 Position { get; set; }
             public string TileLabel { get; set; }
-            public static string EmptyTileString => string.Empty;
-            public static int TotalTilesCreated { get; private set; }
-
-            public static void IncrementTileCount() => TotalTilesCreated++;
+            
         }
 
+        private int TotalTilesCreated { get; set; }
+        private void IncrementTileCount() => TotalTilesCreated++;
+
+        private readonly string _emptyTileString;
+
         public TileState[,] Tiles { get; private set; }
-        public static Vector2Int EmptyTileIndex;
+        public Vector2Int EmptyTileIndex;
         
         public GameObject[,] SpawnedTiles { get; private set; }
 
@@ -25,6 +27,8 @@ namespace nPuzzle.GridSystem
         public GridState(GridSo gridSo)
         {
             _gridSo = gridSo;
+            _emptyTileString = _gridSo.tileConfiguration.emptyTileString;
+            
             InitializeTileArrays(gridSo.rows, gridSo.columns);
         }
 
@@ -32,31 +36,20 @@ namespace nPuzzle.GridSystem
         {
             Tiles = new TileState[rows, columns];
             SpawnedTiles = new GameObject[rows, columns];
+            FindEmptyTileIndex();
         }
 
-        public void FindEmptyTileIndex()
+        private void FindEmptyTileIndex()
         {
-            for (int row = _gridSo.rows - 1; row >= 0; row--)
-            {
-                for (int column = 0; column < _gridSo.columns; column++)
-                {
-                    bool currentTileEmpty = _gridSo.CurrentGridState.Tiles[row, column].TileLabel
-                        .Equals(TileState.EmptyTileString);
-                    
-                    if (currentTileEmpty)
-                    {
-                        EmptyTileIndex = new Vector2Int(row, column);
-                    }
-                }
-            }
+            EmptyTileIndex = new Vector2Int(0, _gridSo.columns -1);
         }
 
 
         public void AddTile(int row, int column, Vector3 position)
         {
-            TileState.IncrementTileCount();
+            IncrementTileCount();
             var tileLabel = GenerateTileLabel(row, column, _gridSo.columns - 1);
-            Debug.Log($"{row}, {column}, {tileLabel}");
+            //Debug.Log($"{row}, {column}, {tileLabel}");
 
             Tiles[row, column] = new TileState
             {
@@ -69,7 +62,7 @@ namespace nPuzzle.GridSystem
         {
             bool isBottomRightTile = (row == 0 && column == lastColumnIndex);
             
-            return isBottomRightTile ? TileState.EmptyTileString : TileState.TotalTilesCreated.ToString();
+            return isBottomRightTile ? _emptyTileString : TotalTilesCreated.ToString();
         }
 
         public void SpawnTile(int row, int column, Vector3 position, Transform parent)

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace nPuzzle.GridSystem
+namespace nPuzzle.Systems.GridSystem
 {
     public class FontProperties : MonoBehaviour
     {

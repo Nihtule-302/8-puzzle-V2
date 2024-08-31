@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace nPuzzle.GridSystem
+namespace nPuzzle.Systems.GridSystem
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/GridInfo", fileName = "Grid (n*m)")]
     public class GridSo : ScriptableObject
